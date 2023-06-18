@@ -15,7 +15,7 @@ def parse_chat(chat):  # -> List[Tuple[str, str]]:
     code_blocks = split_chat[1] if is_token_found else chat
 
     # Get all ``` blocks and preceding filenames
-    regex = r"\[(.*?)\]\s*```.*?\n(.*?)```"
+    regex = r"(\S+?)\n```\S+\n(.+?)```"
     matches = re.finditer(regex, code_blocks, re.DOTALL)
 
     files = []
