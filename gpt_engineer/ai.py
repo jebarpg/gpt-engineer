@@ -28,7 +28,7 @@ class AI:
 
     def next(self, messages: list[dict[str, str]], prompt=None):
         if prompt:
-            messages = messages + [{"role": "user", "content": prompt}]
+            messages += [{"role": "user", "content": prompt}]
 
         logger.debug(f"Creating a new chat completion: {messages}")
         response = openai.ChatCompletion.create(
@@ -45,6 +45,6 @@ class AI:
             print(msg, end="")
             chat.append(msg)
         print()
-        messages = messages + [{"role": "assistant", "content": "".join(chat)}]
+        messages += [{"role": "assistant", "content": "".join(chat)}]
         logger.debug(f"Chat completion finished: {messages}")
         return messages
